@@ -1,4 +1,7 @@
 import routerInstance from './js/routes.js'
+import Storage from './js/storage.js'
+
+const storage = new Storage()
 
 const loadVideo = (elPlayer, videoFile) => {
   if (!elPlayer) {
@@ -12,35 +15,44 @@ const loadVideo = (elPlayer, videoFile) => {
   elSource.src = `./media/${videoFile}`
   elPlayer.load()
 
-  if (window.history.state.videoTimestamp) {
-    console.log('window.history.state.videoTimestamp', window.history.state.videoTimestamp)
-    elPlayer.currentTime = window.history.state.videoTimestamp
+  if (storage.getItem('videoTimestamp')) {
+    elPlayer.currentTime = storage.getItem('videoTimestamp')
   }
+  // if (window.history.state.videoTimestamp) {
+  //   elPlayer.currentTime = window.history.state.videoTimestamp
+  // }
 }
 
-const pushState = (obj) => {
-  const baseState = {
-    videoTimestamp: null,
-    videoFile: 'util.mp4'
-  }
+// const pushState = (obj) => {
+//   const baseState = {
+//     videoTimestamp: null,
+//     videoFile: 'util.mp4'
+//   }
 
-  let currentState = { ...baseState }
+//   storage.setItem('teste', 'ok')
+//   storage.setItem('teste2', 'xxxxxx')
 
-  if (window.history.state) {
-    currentState = { ...window.history.state }
-  }
+//   console.log('s', storage.getItem('teste2'))
 
-  if (!isNaN(obj.videoTimestamp)) {
-    currentState.videoTimestamp = obj.videoTimestamp
-  }
-  if (obj.videoFile) {
-    currentState.videoFile = obj.videoFile
-  }
+//   storage.clear()
 
-  console.log('currentState', currentState)
+//   let currentState = { ...baseState }
 
-  window.history.pushState(currentState, '')
-}
+//   if (window.history.state) {
+//     currentState = { ...window.history.state }
+//   }
+
+//   if (!isNaN(obj.videoTimestamp)) {
+//     currentState.videoTimestamp = obj.videoTimestamp
+//   }
+//   if (obj.videoFile) {
+//     currentState.videoFile = obj.videoFile
+//   }
+
+//   console.log('currentState', currentState)
+
+//   window.history.pushState(currentState, '')
+// }
 
 const playerControl = (elPlayer) => {
   if (!elPlayer) {
@@ -59,10 +71,12 @@ const playerControl = (elPlayer) => {
   elPlayer.addEventListener('timeupdate', () => {
     console.log('timeupdate', elPlayer.currentTime)
 
-    pushState({ videoTimestamp: elPlayer.currentTime })
+    // pushState({ videoTimestamp: elPlayer.currentTime })
+    storage.setItem('videoTimestamp', elPlayer.currentTime)
   })
   elPlayer.addEventListener('pause', evt => {
-    pushState({ videoTimestamp: evt.target.currentTime })
+    // pushState({ videoTimestamp: evt.target.currentTime })
+    storage.setItem('videoTimestamp', evt.target.currentTime)
 
     console.log('pause', evt.target.currentTime)
   })
@@ -100,15 +114,21 @@ const loadPage = (elRoot, routeInfo) => {
           btn.addEventListener('click', evt => {
             const fileName = evt.target.attributes['video-file'].value
 
-            pushState({ videoFile: fileName, videoTimestamp: 0 })
+            // pushState({ videoFile: fileName, videoTimestamp: 0 })
+            storage.setItem('videoFile', fileName)
+            storage.setItem('videoTimestamp', 0)
+
             loadVideo(elPlayer, fileName)
           })
         })
 
-        if (window.history.state && window.history.state.videoFile) {
-          console.log('caiu aqui')
-          loadVideo(elPlayer, window.history.state.videoFile)
+        if (storage.getItem('videoFile')) {
+          loadVideo(elPlayer, storage.getItem('videoFile'))
         }
+        // if (window.history.state && window.history.state.videoFile) {
+        //   console.log('caiu aqui')
+        //   loadVideo(elPlayer, window.history.state.videoFile)
+        // }
 
         playerControl(elPlayer)
         // pushState({})
@@ -128,7 +148,7 @@ window.onload = () => {
   let root = document.getElementById('app')
 
   window.onpopstate = function (event) {
-    if (event.state.videoFile) {
+    if (event.state && event.state.videoFile) {
       loadVideo(document.getElementById('player'), event.state.videoFile)
     }
 
