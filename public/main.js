@@ -164,7 +164,7 @@ window.onload = () => {
 
   // method to navigate
   let navigate = e => {
-    let route = e.target.attributes[0].value
+    let route = e.target.attributes['router-link'].value
 
     // redirect to the router instance
     let routeInfo = routerInstance.routes.filter(r => r.path === route)[0]

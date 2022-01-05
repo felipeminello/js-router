@@ -27,5 +27,4 @@ let routerInstance = new Router('routerInstance', [
   }
 ])
 
-
 export default routerInstance
