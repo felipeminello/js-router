@@ -176,6 +176,10 @@ window.onload = () => {
       window.history.pushState(null, '', 'error')
       root.innerHTML = 'This route is not Defined'
     } else {
+      if (window.location.pathname === routeInfo.path) {
+        return false
+      }
+
       // window.history.pushState({ 'path': routeInfo.path, 'user_id': 5 }, '', routeInfo.path)
       window.history.pushState(null, '', routeInfo.path)
 

@@ -1,0 +1,160 @@
+.login-app {
+    div.login-brand {
+        text-align: center;
+        img {
+            width: 300px;
+            margin: 0 auto 40px;
+
+            @media (max-width: 600px) {
+                width: 260px;
+            }
+        }
+        h2 {
+            margin: 0 0 20px 0; 
+            font-weight: 400; 
+            text-transform: uppercase; 
+            font-size: 26px; 
+            color: $gray5;
+        }
+    }
+
+    background-color: #012233;
+    background-image: url(../images/bg-login.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-width: 100%;
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: 1px solid #fff;
+        -webkit-text-fill-color:#495057;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+        box-shadow: 0 0 0px 1000px #fff inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    .v-card {
+        padding: 20px;
+        border-radius: 10px !important;
+        font-family: $nunito !important;
+
+        .input {
+            font-family: $nunito !important;
+        }
+
+        .v-input__control {
+            .v-text-field__details {
+                display: none;
+            }
+        }
+
+        .v-input__slot {
+            margin-bottom: 20px;
+        }
+
+        .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
+            color: #399FC5;
+            border-radius: 8px;
+        }
+
+        .theme--light.v-text-field--outlined.v-input--is-focused > .v-input__control > .v-input__slot fieldset {
+            color: #399FC5;
+            border-radius: 8px;
+        }
+
+        .btn-login {
+            width: 100%;
+            background-color: #8fb435  !important;
+            height: 50px !important;
+
+            &-back {
+                background-color: transparent !important;
+                border: 1px solid #167BA7;
+                color: #167BA7;
+                padding: 5px 8px !important;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                font-family: $nunito;
+                font-weight: 400;
+                letter-spacing: 0;
+                border-radius: 10px;
+            }
+
+            .v-btn__content {
+                color: #fff;
+                font-family: $nunito;
+                font-size: 20px;
+                letter-spacing: initial;
+            }
+        }
+    }
+
+    .v-card .v-card__title .v-toolbar__title {
+        text-align: center;
+        width: 100%;
+        font-family: $nunito;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    a.link {
+        font-family: $nunito;
+        font-size: 16px;
+        text-decoration: underline;
+        text-align: center;
+        display: block;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+
+    p.link {
+        font-family: $nunito;
+        font-size: 16px;
+        text-align: center;
+        display: block;
+
+        a {
+            font-family: $nunito;
+            font-size: 15px;
+            text-decoration: underline;
+        }
+    }
+}
+
+.user-thumb-edit {
+    .v-image {
+        border-radius: 5px;
+    }
+
+    .v-overlay {
+        // background-color: red;
+        max-width: 170px;
+        max-height: 170px;
+        margin: 12px 0 0 15px;
+
+        .upload-btn {
+            background-color: transparent;
+            
+            label {
+                background-color: #1172bb !important;
+                padding: 8px;
+                border-radius: 8px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.user-type {
+    label {
+        margin-bottom: 0;
+    }
+}

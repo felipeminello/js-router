@@ -17,6 +17,11 @@ let routerInstance = new Router('routerInstance', [
     page: 'about.html'
   },
   {
+    path: '/login',
+    name: 'Login',
+    page: 'login.html'
+  },
+  {
     path: '/video',
     name: 'Video',
     page: 'video.html'

@@ -1,7 +1,10 @@
 @import "../../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
-$primary: purple;
+$primary: #1172BB;
+
+@import "variables";
+@import "fonts";
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";
@@ -29,3 +32,5 @@ $primary: purple;
     @include button-outline-variant($value);
   }
 }
+
+@import 'login'
