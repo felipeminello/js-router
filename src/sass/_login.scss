@@ -62,6 +62,10 @@
             font-size: 20px;
             letter-spacing: initial;
             border-radius: 10px;
+
+            &:active {
+                border-color: #012233;
+            }
         }
 
         .title {
@@ -79,8 +83,6 @@
         text-decoration: underline;
         text-align: center;
         display: block;
-        margin-top: -10px;
-        margin-bottom: 10px;
     }
 
     p.link {
