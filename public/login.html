@@ -11,10 +11,38 @@
 </head>
 
 <body>
-  <div style="min-height: 100vh; flex: 1 1 auto; position: relative;">
-    <div class="login-app">
+  <div class="d-flex align-items-stretch" style="min-height: 100vh;">
+    <div class="login-app d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-8 col-5 align-self-center">
+            <div class="login-brand"><img src="/images/ead-viamaker-white.svg" alt="Logo EAD Viamaker"></div>
+            <div class="v-card bg-white py-4">
+              <div class="title pb-3">Acesse sua conta</div>
+              <form>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="email" value="" placeholder="Digite seu email">
+                  <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="password" value="" placeholder="Senha">
+                  <label for="password">Senha</label>
+                </div>
+                <a class="link">Esqueci minha senha</a>
+
+                <button type="button" class="btn btn-login">Entrar</button>
+              </form>
+            </div>
+            <!---->
+            <!---->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <script src="/js/vendor/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

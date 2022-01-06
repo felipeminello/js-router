@@ -6,20 +6,23 @@ $primary: #1172BB;
 @import "variables";
 @import "fonts";
 
-// 3. Include remainder of required Bootstrap stylesheets
-@import "../../node_modules/bootstrap/scss/variables";
-@import "../../node_modules/bootstrap/scss/mixins";
-@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-// 4. Include any optional Bootstrap CSS as needed
-@import "../../node_modules/bootstrap/scss/utilities";
-@import "../../node_modules/bootstrap/scss/reboot";
-@import "../../node_modules/bootstrap/scss/type";
-@import "../../node_modules/bootstrap/scss/images";
-@import "../../node_modules/bootstrap/scss/containers";
-@import "../../node_modules/bootstrap/scss/grid";
-@import "../../node_modules/bootstrap/scss/helpers";
-@import "../../node_modules/bootstrap/scss/buttons";
+// // 3. Include remainder of required Bootstrap stylesheets
+// @import "../../node_modules/bootstrap/scss/variables";
+// @import "../../node_modules/bootstrap/scss/mixins";
+// @import "../../node_modules/bootstrap/scss/root";
+// @import "../../node_modules/bootstrap/scss/utilities";
+
+// // 4. Include any optional Bootstrap CSS as needed
+// @import "../../node_modules/bootstrap/scss/utilities";
+// @import "../../node_modules/bootstrap/scss/reboot";
+// @import "../../node_modules/bootstrap/scss/type";
+// @import "../../node_modules/bootstrap/scss/images";
+// @import "../../node_modules/bootstrap/scss/containers";
+// @import "../../node_modules/bootstrap/scss/grid";
+// @import "../../node_modules/bootstrap/scss/helpers";
+// @import "../../node_modules/bootstrap/scss/buttons";
 
 @each $color, $value in $colors {
   .btn-#{$color} {
@@ -33,4 +36,5 @@ $primary: #1172BB;
   }
 }
 
-@import 'login'
+@import 'default';
+@import 'login';
