@@ -1,5 +1,7 @@
-import routerInstance from './js/routes.js'
-import Storage from './js/storage.js'
+import 'bootstrap'
+
+import routerInstance from './routes'
+import Storage from './storage'
 
 const storage = new Storage()
 
