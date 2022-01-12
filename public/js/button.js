@@ -16,8 +16,6 @@ function createRipple(event) {
     ripple.remove()
   }
 
-  console.log('teta')
-
   button.appendChild(circle)
 }
 
@@ -26,5 +24,3 @@ const buttons = document.getElementsByTagName('button')
 for (const button of buttons) {
   button.addEventListener('click', createRipple)
 }
-
-export default createRipple
