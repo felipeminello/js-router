@@ -5,12 +5,13 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "sass --style compressed src/sass:public/css/"
+    "build": "sass --quiet --style compressed src/sass:public/css/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "express": "^4.17.1",
     "morgan": "^1.10.0"
   },

@@ -53,9 +53,8 @@
             font-family: $nunito !important;
         }
 
-        .btn-login {
+        .btn {
             width: 100%;
-            background-color: #8fb435  !important;
             height: 50px !important;
             color: #fff;
             font-family: $nunito;
@@ -66,7 +65,21 @@
             &:active {
                 border-color: #012233;
             }
+
+
+
         }
+
+                    .btn-login {
+                background-color: #8fb435 !important;
+        }
+
+                .btn-back {
+            background-color: $gray5 !important;
+        }
+
+
+
 
         .title {
             text-align: center;

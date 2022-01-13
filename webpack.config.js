@@ -2,14 +2,19 @@ const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
-  entry: './src/js/main.js',
+  entry: { main: './src/js/main.js', bootstrap: './src/js/bootstrap.js' },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.join(__dirname, 'public', 'js'),
   },
   optimization: {
-    minimizer: [new TerserPlugin({
-      extractComments: false,
-    })],
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+      })
+    ]
+  },
+  resolve: {
+    modules: ['node_modules'],
   },
 }
