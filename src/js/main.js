@@ -96,7 +96,45 @@ const playerControl = (elPlayer) => {
   })
 }
 
-const loadPage = (elRoot, routeInfo) => {
+const checkAuth = (routeInfo) => new Promise(resolve => {
+  if (routeInfo.auth) {
+    if (!storage.getItem('token')) {
+      location.href = '/login'
+
+      return resolve(false)
+    }
+  }
+
+  return resolve(true)
+})
+
+
+const loadPage = async (elRoot, routeInfo) => {
+  if (!routeInfo) {
+    // window.history.pushState({ error: true }, '', 'error')
+    window.history.pushState(null, '', 'error')
+    elRoot.innerHTML = 'This route is not Defined'
+
+    return false
+  }
+
+  console.log('routeInfo', routeInfo)
+
+  // if (window.location.pathname === routeInfo.path) {
+  //   return false
+  // }
+
+  window.history.pushState(null, '', routeInfo.path)
+
+  if (routeInfo.path === '/logout') {
+    storage.removeItem('token')
+    location.href = '/login'
+
+    return false
+  }
+
+  await checkAuth(routeInfo)
+
   if (!routeInfo.page) {
     elRoot.innerHTML = `You are on the ${routeInfo.name} path`
 
@@ -142,7 +180,7 @@ const loadPage = (elRoot, routeInfo) => {
   xhttp.send()
 }
 
-window.onload = () => {
+window.onload = async () => {
 
   // let routerInstance = require('./routes')
 
@@ -165,30 +203,13 @@ window.onload = () => {
 
 
   // method to navigate
-  let navigate = e => {
+  let navigate = async e => {
     let route = e.target.attributes['router-link'].value
 
     // redirect to the router instance
     let routeInfo = routerInstance.routes.filter(r => r.path === route)[0]
 
-    console.log('routeInfo', routeInfo)
-
-    if (!routeInfo) {
-      // window.history.pushState({ error: true }, '', 'error')
-      window.history.pushState(null, '', 'error')
-      root.innerHTML = 'This route is not Defined'
-    } else {
-      if (window.location.pathname === routeInfo.path) {
-        return false
-      }
-
-      // window.history.pushState({ 'path': routeInfo.path, 'user_id': 5 }, '', routeInfo.path)
-      window.history.pushState(null, '', routeInfo.path)
-
-      console.log('History.state after pushState: ', window.history.state)
-
-      loadPage(root, routeInfo)
-    }
+    await loadPage(root, routeInfo)
   }
 
 
@@ -201,7 +222,7 @@ window.onload = () => {
   let currentPath = window.location.pathname
   let routeInfo = routerInstance.routes.filter(r => r.path === currentPath)[0]
 
-  loadPage(root, routeInfo)
+  await loadPage(root, routeInfo)
 
   // if (currentPath === '/') {
   //     root.innerHTML = 'You are on Home page'

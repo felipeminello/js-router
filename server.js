@@ -27,21 +27,31 @@ const routes = [
 app.get('*', (req, res) => {
   const route = routes.find(r => r.path === req.params['0'])
 
-  if (!route) {
-    return res.sendFile(path.resolve('src', 'views', 'error', '404.html'))
+  if (route && route.file) {
+    const filePath = path.resolve('src', 'views', route.file)
+
+    if (fs.existsSync(filePath)) {
+      return res.sendFile(filePath)
+    }
   }
 
-  if (!route.file) {
-    return res.sendFile(path.resolve('src', 'views', 'error', '500.html'))
-  }
+  return res.sendFile(path.resolve('src', 'views', 'index.html'))
 
-  const filePath = path.resolve('src', 'views', route.file)
+  // if (!route) {
+  //   return res.sendFile(path.resolve('src', 'views', 'error', '404.html'))
+  // }
 
-  if (!fs.existsSync(filePath)) {
-    return res.sendFile(path.resolve('src', 'views', 'error', '500.html'))
-  }
+  // if (!route.file) {
+  //   return res.sendFile(path.resolve('src', 'views', 'error', '500.html'))
+  // }
 
-  return res.sendFile(filePath)
+  // const filePath = path.resolve('src', 'views', route.file)
+
+  // if (!fs.existsSync(filePath)) {
+  //   return res.sendFile(path.resolve('src', 'views', 'error', '500.html'))
+  // }
+
+  // return res.sendFile(filePath)
   // return res.sendFile(__dirname + '/public/index.html')
 })
 

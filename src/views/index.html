@@ -11,20 +11,37 @@
 </head>
 
 <body>
-
-    <nav>
-        <button class="btn btn-primary" router-link="/">Home</button>
-        <button class="btn btn-orange" router-link="/about">About</button>
-        <button router-link="/contact">Contact</button>
-        <button router-link="/video">Vídeo</button>
-        <button router-link="/unknown">Error</button>
-    </nav>
-    <h1>Javascript Routing</h1>
-    <div id="app">
-    </div>
-
+    <header class="text-center">
+        <h1>Javascript Routing</h1>
+        <nav>
+            <button class="btn btn-primary" router-link="/">Home</button>
+            <button class="btn btn-orange" router-link="/about">About</button>
+            <button class="btn btn-green" router-link="/contact">Contact</button>
+            <button class="btn btn-purple" router-link="/video">Vídeo</button>
+            <button class="btn btn-dark" router-link="/unknown">Error</button>
+            <button class="btn btn-teal" router-link="/logout">Logout</button>
+        </nav>
+    </header>
+    <main>
+        <nav class="position-fixed top-0 h-100 bg-dark" style="width: 56px; transition: width 0.3s;" id="sider-menu">
+            teste
+        </nav>
+        <div id="app" style="padding-left: 56px;"></div>
+    </main>
 
     <script type="module" src="/js/main.js"></script>
+    <script>
+        const sliderMenu = document.getElementById('sider-menu')
+        sliderMenu.addEventListener('mouseenter', evt => {
+            evt.target.style.width = '256px'
+        })
+
+        sliderMenu.addEventListener('mouseleave', evt => {
+            console.log('mouse saiu')
+
+            evt.target.style.width = '56px'
+        })
+    </script>
 </body>
 
 </html>

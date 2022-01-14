@@ -9,12 +9,19 @@ let Router = function (name, routes) {
 let routerInstance = new Router('routerInstance', [
   {
     path: '/',
-    name: 'Root'
+    name: 'Root',
+    auth: {
+      showVideo: true
+    }
   },
   {
     path: '/about',
     name: 'About',
     page: 'about.html'
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
   },
   {
     path: '/login',
